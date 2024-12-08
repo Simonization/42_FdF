@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:46 by slangero          #+#    #+#             */
-/*   Updated: 2024/10/08 12:48:31 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/08 18:50:09 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <math.h>
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
-# include "get_next_line.h"
+# include "../utils/get_next_line.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <limits.h>
@@ -31,8 +31,6 @@ typedef struct s_point
 	float	x;
 	float	y;
 	float	z;
-// colours?
-// projected?
 	int		height;
 	int		width;
 }	t_point;
@@ -44,24 +42,56 @@ typedef struct s_image
 	int		bits_per_pixel;
 	int		endian;
 	int		size_line;
-// endian?
 }	t_image;
 
-typedef struct t_mlx_data
+typedef struct map
+{
+	int		width;
+	int		height;
+	t_point	*points;	
+}	t_map;
+
+typedef struct s_mlx_data
 {
 	void	*mlx_connection;
 	void	*mlx_window;
-	int		height;
-	int		width;
-	char	**argv;
 	t_image	*image;
-	t_point	*point;
-// remplacer argv par un truc plus lisible?
-}	t_mlx_data
+	t_map	*map;
+}	t_mlx_data;
 
-int	main(int ac, char **av);
+/*           Functions         */
+int			main(int ac, char **av);
 
+/*          Parsing          */
+t_map		*init_map(char *filename);
+//int		validate_map(char *filename);
+t_map		*get_map_dimensions(char *filename);
+
+/*          map_dimensions          */
+t_map		*get_map_dimensions(char *filename);
+
+/*           Window         */
 t_mlx_data	*make_window(void);
 int			close_window(t_mlx_data *data);
+int			key_hook(int keycode, t_mlx_data *data);
+
+/*           Point         */
+void		pixel_put(t_mlx_data *data, int x, int y, int colour);
+void		iso_project(float *x, float *y, float z);
+t_point		project_point(t_point p, t_mlx_data *data);
+
+/*           Draw         */
+void		draw_line(t_mlx_data *data, t_point start, t_point end);
+void		draw_map(t_mlx_data *data);
+float		zoom_factor(t_map *map);
+
+/*           Error       */
+void		exit_malloc(void);
+void		window_error(void);
+void		exit_error(char *message);
+
+/*           Free       */
+int			clean_window(t_mlx_data *data);
+void		cleanup_and_exit(t_mlx_data *data, int with_image);
 
 #endif

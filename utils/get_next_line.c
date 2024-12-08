@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slangero <slangero@student.s19.be>         +#+  +:+       +#+        */
+/*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 18:39:56 by slangero          #+#    #+#             */
-/*   Updated: 2024/07/05 11:06:14 by slangero         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:17:29 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*read_line(int fd, char *stash, char *buffer)
 	int		bytes_read;
 	char	*temp;
 
-	while (!ft_strchr(stash))
+	while (!ft_gnl_strchr(stash))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)

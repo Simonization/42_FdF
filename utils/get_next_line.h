@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:52:06 by slangero          #+#    #+#             */
-/*   Updated: 2024/10/08 12:54:19 by slangero         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:17:14 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ char		*read_line(int fd, char *stash, char *buffer);
 char		*ft_extract_line(char **line_buffer);
 char		*ft_free(char **str, int n);
 
-char		*ft_strchr(const char *str, int c);
-int			ft_strlen(const char *str);
-char		*ft_strdup(char *str);
-char		*ft_substr(char *s, int start, int len);
-char		*ft_strjoin(char *str, char *buffer);
+char		*ft_gnl_strchr(char *s);
+size_t		ft_strlen(const char *str);
+char		*ft_strdup(const char *str);
+char		*ft_substr(const char *s, unsigned int start, size_t len);
+char		*ft_strjoin(const char *s1, const char *s2);
 
 #endif

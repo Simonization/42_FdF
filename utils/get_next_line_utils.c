@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slangero <slangero@student.s19.be>         +#+  +:+       +#+        */
+/*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:06:00 by slangero          #+#    #+#             */
-/*   Updated: 2024/07/04 19:17:29 by slangero         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:17:03 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(char *s)
+char	*ft_gnl_strchr(char *s)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ char	*ft_strchr(char *s)
 	return (NULL);
 }
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
@@ -42,7 +42,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strdup(char *s)
+char	*ft_strdup(const char *s)
 {
 	char				*dupstr;
 	unsigned int		i;
@@ -62,22 +62,22 @@ char	*ft_strdup(char *s)
 	return (dupstr);
 }
 
-char	*ft_substr(char *s, int start, int len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*substr;
 	int		i;
 
 	if (!s)
 		return (NULL);
-	if (start > ft_strlen(s))
+	if ((size_t)start > ft_strlen(s))
 		return (malloc(1));
-	if (len > ft_strlen(s + start))
+	if ((size_t)len > ft_strlen(s + start))
 		len = ft_strlen(s + start);
 	substr = malloc(sizeof(char) * (len + 1));
 	if (!substr)
 		return (NULL);
 	i = 0;
-	while (i < len)
+	while ((size_t)i < len)
 	{
 		substr[i] = s[start + i];
 		i++;
@@ -86,7 +86,7 @@ char	*ft_substr(char *s, int start, int len)
 	return (substr);
 }
 
-char	*ft_strjoin(char *str, char *buff)
+char	*ft_strjoin(const char *str, const char *buff)
 {
 	int		i;
 	int		j;
