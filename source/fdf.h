@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:29:46 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/08 18:50:09 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/09 10:28:54 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int			close_window(t_mlx_data *data);
 int			key_hook(int keycode, t_mlx_data *data);
 
 /*           Point         */
-void		pixel_put(t_mlx_data *data, int x, int y, int colour);
+void		draw_point(t_mlx_data *data, int x, int y, int colour);
 void		iso_project(float *x, float *y, float z);
 t_point		project_point(t_point p, t_mlx_data *data);
 

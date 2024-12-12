@@ -6,7 +6,7 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:55:26 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/08 18:49:38 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:13:45 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_line(t_mlx_data *data, t_point start, t_point end)
 	dy /= max;
 	while ((int)(start.x - end.x) || (int)(start.y - end.y))
 	{
-		pixel_put(data, start.x, start.y, 0xFFFFFF);
+		draw_point(data, start.x, start.y, 0xFFFFFF);
 		start.x += dx;
 		start.y += dy;
 	}
@@ -75,7 +75,7 @@ void	draw_map(t_mlx_data *data)
 			x++;
 		}
 		y++;
-	}	
+	}
 }
 
 float	zoom_factor(t_map *map)
@@ -87,7 +87,7 @@ float	zoom_factor(t_map *map)
 	if (map_size > 100000)
 		zoom = 1.7;
 	else if (map_size > 5000)
-		zoom = 5;
+		zoom = 4.6;
 	else if (map_size > 500)
 		zoom = 7;
 	else

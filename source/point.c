@@ -6,13 +6,13 @@
 /*   By: slangero <slangero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:55:29 by slangero          #+#    #+#             */
-/*   Updated: 2024/12/08 17:25:51 by slangero         ###   ########.fr       */
+/*   Updated: 2024/12/09 10:27:58 by slangero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	pixel_put(t_mlx_data *data, int x, int y, int colour)
+void	draw_point(t_mlx_data *data, int x, int y, int colour)
 {
 	int	pixel;
 
